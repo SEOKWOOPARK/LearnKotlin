@@ -11,13 +11,21 @@ class MemberService { // cmd + shift + T : 테스트 바로가기
     var memberRepository:MemberRepository = MemoryMemberRepository()
 
     fun join(member: Member): Long { // 회원가입 로직
-        // name 중복 방지
-        validateDuplicateMember(member) // option + cmd + m -> 메서드 함수 추출
-        memberRepository.save(member)
-        return member.id
+        val start: Long = System.currentTimeMillis() // for printing time
+
+        try {
+            validateDuplicateMember(member) // option + cmd + m -> 메서드 함수 추출
+            memberRepository.save(member)
+            return member.id
+        }finally {
+            val finish: Long = System.currentTimeMillis()
+            val timeMs: Long = finish - start
+            println("join = " + timeMs + "ms")
+        }
     }
 
     private fun validateDuplicateMember(member: Member) {
+        // name 중복 방지
         //        var result: Member? = memberRepository.findByName(member.name)
         //        if(result != null) { throw IllegalStateException("This member is already exist!")}
         memberRepository.findByName(member.name)?.also {
@@ -27,7 +35,15 @@ class MemberService { // cmd + shift + T : 테스트 바로가기
 
     // 전체 회원조회
     fun findMembers(): MutableList<Member> {
-        return memberRepository.findAll()
+        val start: Long = System.currentTimeMillis()
+
+        try {
+            return memberRepository.findAll()
+        } finally {
+            val finish: Long = System.currentTimeMillis()
+            val timeMs: Long = finish - start;
+            println("findMembers " + timeMs + "ms")
+        }
     }
 
     fun findOne(memberId: Long): Member? { // Member?
