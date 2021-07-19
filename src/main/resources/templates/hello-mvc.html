@@ -8,5 +8,11 @@
 <p th:text="'String 값으로 다음을 입력:  ' + ${name}">text=""에 의해 치환되는 영역</p>
 <p th:text="'int 값으로 다음을 입력:  ' + ${num}">text=""에 의해 치환되는 영역</p>
 <p th:text="'boolean 값으로 다음을 입력:  ' + ${bool}">text=""에 의해 치환되는 영역</p>
+<p th:text="'전체 데이터에 맵핑된 문자열:  ' + ${StringValue}">text=""에 의해 치환되는 영역</p>
+<p th:text="'전체 데이터에 맵핑된 객체(name):  ' + ${ObjectValue.name}">text=""에 의해 치환되는 영역</p>
+<p th:text="'전체 데이터에 맵핑된 객체(address):  ' + ${ObjectValue.address}">text=""에 의해 치환되는 영역</p>
+<p th:text="'전체 데이터에 맵핑된 객체(attendance):  ' + ${ObjectValue.todayAttendance}">text=""에 의해 치환되는 영역</p>
+<p th:text="'전체 데이터에 맵핑된 객체(Goal):  ' + ${ObjectValue.Goals[0]}">text=""에 의해 치환되는 영역</p>
+<p th:text="'전체 데이터에 맵핑된 객체(Assist):  ' + ${ObjectValue.Assists[0]}">text=""에 의해 치환되는 영역</p>
 </body>
 </html>

@@ -4,14 +4,15 @@ import com.example.LearnKotlin.domain.Member
 import com.example.LearnKotlin.service.MemberService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
 class MemberController {
+
     var memberService: MemberService = MemberService()
 
-    @Autowired
     fun MemberController(memberService: MemberService) {
         this.memberService = memberService
     }
@@ -29,4 +30,12 @@ class MemberController {
         memberService.join(member)
         return "redirect:/"
     }
+
+    @GetMapping("/members")
+    fun list(model: Model): String {
+        var members: MutableList<Member> = memberService.findMembers()
+        model.addAttribute("members", members);
+        return "members/memberList"
+    }
+
 }

@@ -1,0 +1,15 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Goodbye</title>
+</head>
+<body>
+<p th:text="'String 값으로 다음을 입력:  ' + ${name}">text=""에 의해 치환되는 영역</p>
+<p th:text="'int 값으로 다음을 입력:  ' + ${num}">text=""에 의해 치환되는 영역</p>
+<p th:text="'boolean 값으로 다음을 입력:  ' + ${bool}">text=""에 의해 치환되는 영역</p>
+<p th:text="'전체 데이터에 맵핑된 객체(address):  ' + ${ObjectValue.address}">text=""에 의해 치환되는 영역</p>
+<p th:text="'전체 데이터에 맵핑된 객체(name):  ' + ${ObjectValue.name}">text=""에 의해 치환되는 영역</p>
+
+</body>
+</html>
